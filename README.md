@@ -36,7 +36,7 @@ This Android app allows you to view NASA's "Image of the Day" along with its des
 - Caching of image data for faster loading and offline access.
 - Graceful error handling for API request failures.
 - UI includes an ImageView for displaying the image, and TextViews for title, date, and description.
-- PlayerVuew for playing video content if applicable.
+- PlayerView for playing video content if applicable.
 
 ## Contributing
 
