@@ -30,14 +30,6 @@ class TestAssignmentApp : Application() {
         }
 
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        //  MapsInitializer.initialize(applicationContext, MapsInitializer.Renderer.LATEST, null)
-        // myAppsNotificationManager = MyAppsNotificationManager.getInstance(this)
-        /* myAppsNotificationManager?.registerNotificationChannelChannel(
-             getString(R.string.DEFAULT_CHANNEL_ID),
-             getString(R.string.CHANNEL_DEFAULT),
-             getString(R.string.CHANNEL_DEFAULT_DESCRIPTION)
-         )
- */
     }
 
     /*** function to get all di modules array*/
