@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tuyenmonkey.mkloader.MKLoader
+    android:id="@+id/mkl"
+    android:layout_margin="@dimen/dimen_7"
+    android:layout_width="@dimen/dimen_70"
+    android:layout_height="@dimen/dimen_70"
+    app:mk_type="FivePulse"
+    app:mk_color="#F9CB10"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"/>
