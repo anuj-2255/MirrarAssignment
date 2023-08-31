@@ -1,6 +1,9 @@
 package com.example.testassignment.network
 
 import androidx.lifecycle.MutableLiveData
+import android.util.Log
+import com.example.testassignment.R
+import com.example.testassignment.TestAssignmentApp
 import com.example.testassignment.model.bean.ErrorResponse
 import com.google.gson.Gson
 import kotlinx.coroutines.Deferred
@@ -15,6 +18,7 @@ abstract class DataFetchCall<ResultType>(private val responseLiveData: MutableLi
     abstract suspend fun createCallAsync(): Deferred<Response<ResultType>>
 
     fun execute() {
+        val instance = TestAssignmentApp.instance
         responseLiveData?.postValue(ApiResponse.loading())
         GlobalScope.launch(Dispatchers.IO) {
             try {
@@ -24,8 +28,9 @@ abstract class DataFetchCall<ResultType>(private val responseLiveData: MutableLi
                 } else {
                     val error =
                         Gson().fromJson(response.errorBody()?.string(), ErrorResponse::class.java)
-                    val msg = error?.error?.message ?: "Something went wrong"
-                    val code = error?.error?.code ?: ""
+                    //you can also create your custom error message on the basis ErrorCode you get in API.
+                    val code = error?.error?.code ?: instance.getString(R.string.something_went_wrong)
+                    val msg = error?.error?.message ?: instance.getString(R.string.something_went_wrong)
                     responseLiveData?.postValue(
                         ApiResponse.error(
                             ApiResponse.ApiError(
@@ -42,7 +47,7 @@ abstract class DataFetchCall<ResultType>(private val responseLiveData: MutableLi
                     ApiResponse.error(
                         ApiResponse.ApiError(
                             500,
-                            exception.message ?: "Something went wrong"
+                            exception.message ?: instance.getString(R.string.something_went_wrong)
                         )
                     )
                 )

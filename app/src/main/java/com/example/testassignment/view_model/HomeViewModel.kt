@@ -44,6 +44,7 @@ class HomeViewModel(val repo: AppRepository) : BaseViewModel<HomeNavigator>() {
         return nasaResponse
     }
 
+    //using observer to update our live data and return it.
     private val nasaObserver: Observer<ApiResponse<NasaResponse>> by lazy {
         Observer<ApiResponse<NasaResponse>> {
             when (it.status) {
@@ -64,8 +65,10 @@ class HomeViewModel(val repo: AppRepository) : BaseViewModel<HomeNavigator>() {
                 }
                 ApiResponse.Status.ERROR -> {
                     getNavigator()?.hideLoader()
+                    //we can also show the code instead of full error message coming in api.
+                    //or we can put checks on 'stringCode' key to set our custom messages.
                     getNavigator()?.showMsg(
-                        it.error?.stringCode ?: res.getString(R.string.something_went_wrong)
+                        it.error?.message ?: res.getString(R.string.something_went_wrong)
                     )
                 }
             }

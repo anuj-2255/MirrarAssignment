@@ -59,7 +59,5 @@ val appModule = module {
 
     single { ResourceProvider(androidApplication()) }
 
-    //for location
-    //single { CoLocation.from(androidApplication()) }
 
 }

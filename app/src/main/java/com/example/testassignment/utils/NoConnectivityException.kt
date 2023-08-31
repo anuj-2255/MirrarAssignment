@@ -11,6 +11,4 @@ class NoConnectivityException : IOException() {
     override val message: String
         get() = TestAssignmentApp.instance.getString(R.string.no_internet)
 
-
-    // You can send any message whatever you want from here.
 }

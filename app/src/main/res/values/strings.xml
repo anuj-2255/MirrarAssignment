@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">testAssignment</string>
-    <string name="no_internet">No Internet</string>
+    <string name="no_internet">We can’t reach our network right now. Check your connection</string>
     <string name="something_went_wrong">Something went wrong</string>
     <string name="title_with_colon">Title:</string>
     <string name="description_with_colon">Description:</string>
