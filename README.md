@@ -38,12 +38,4 @@ This Android app allows you to view NASA's "Image of the Day" along with its des
 - UI includes an ImageView for displaying the image, and TextViews for title, date, and description.
 - PlayerView for playing video content if applicable.
 
-## Contributing
-
-Contributions to this project are welcome. Feel free to open issues and pull requests to suggest improvements or report bugs.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 
