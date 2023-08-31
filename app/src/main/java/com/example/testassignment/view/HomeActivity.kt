@@ -32,14 +32,6 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>(HomeViewMo
     }
 
     private fun initControl() {
-        //using shared preference for caching because response of api has not much data and can be stored in shared preference.
-        //this will set the old data when ever our api failed to new data
-        if (Hawk.contains(NASA_RESPONSE)) {
-            val data = Hawk.get<String>(NASA_RESPONSE)
-            viewModel.nasaObj = Gson().fromJson(data, NasaResponse::class.java)
-            showHidePlayerView()
-        }
-
         //api call to replace and load new data in sharedPreference whenever we open our app
         viewModel.getDailyImage()
 

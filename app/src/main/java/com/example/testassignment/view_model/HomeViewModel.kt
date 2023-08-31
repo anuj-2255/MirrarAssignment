@@ -22,11 +22,15 @@ class HomeViewModel(val repo: AppRepository) : BaseViewModel<HomeNavigator>() {
 
     //using this variable to set data in out view using databinding.
     @Bindable
-    var nasaObj: NasaResponse? = null
+    var nasaObj: NasaResponse? = if (Hawk.contains(NASA_RESPONSE)) Gson().fromJson(
+        Hawk.get<String>(NASA_RESPONSE),
+        NasaResponse::class.java
+    ) else null
         set(value) {
             if (field != value) {
                 field = value
                 notifyChange()
+                getNavigator()?.showHidePlayerView()
             }
         }
 
@@ -44,7 +48,7 @@ class HomeViewModel(val repo: AppRepository) : BaseViewModel<HomeNavigator>() {
         Observer<ApiResponse<NasaResponse>> {
             when (it.status) {
                 ApiResponse.Status.LOADING -> {
-                        getNavigator()?.showLoader()
+                    getNavigator()?.showLoader()
                 }
                 ApiResponse.Status.SUCCESS -> {
                     getNavigator()?.hideLoader()
