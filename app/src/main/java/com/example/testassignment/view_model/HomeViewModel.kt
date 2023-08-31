@@ -67,6 +67,7 @@ class HomeViewModel(val repo: AppRepository) : BaseViewModel<HomeNavigator>() {
                     getNavigator()?.hideLoader()
                     //we can also show the code instead of full error message coming in api.
                     //or we can put checks on 'stringCode' key to set our custom messages.
+                    //but currently i am showing the same message which i got in api response
                     getNavigator()?.showMsg(
                         it.error?.message ?: res.getString(R.string.something_went_wrong)
                     )
