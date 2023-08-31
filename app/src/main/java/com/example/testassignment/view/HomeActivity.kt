@@ -16,8 +16,8 @@ import com.happytaxidriver.view.base.BaseActivity
 import com.orhanobut.hawk.Hawk
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>
-    (HomeViewModel::class), HomeNavigator {
+class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>(HomeViewModel::class),
+    HomeNavigator {
 
     override val bindingVariable: Int get() = BR.viewModel
     override val layoutId: Int get() = R.layout.activity_home

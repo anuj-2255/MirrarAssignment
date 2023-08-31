@@ -3,8 +3,10 @@ package com.example.testassignment.network
 import androidx.lifecycle.MutableLiveData
 import com.example.testassignment.model.bean.ErrorResponse
 import com.google.gson.Gson
-import com.happytaxidriver.*
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import retrofit2.Response
 
 abstract class DataFetchCall<ResultType>(private val responseLiveData: MutableLiveData<ApiResponse<ResultType>>? = null) {
@@ -19,22 +21,18 @@ abstract class DataFetchCall<ResultType>(private val responseLiveData: MutableLi
                 val response = createCallAsync().await()
                 if (response.isSuccessful) {
                     responseLiveData?.postValue(ApiResponse.success(response.body()))
-                } else if (response.code() == 401) {
-                    val error =
-                        Gson().fromJson(response.errorBody()?.string(), ErrorResponse::class.java)
                 } else {
                     val error =
                         Gson().fromJson(response.errorBody()?.string(), ErrorResponse::class.java)
-                    val msg = error?.errors?.firstOrNull()?.msg ?: error.message
+                    val msg = error?.error?.message ?: "Something went wrong"
+                    val code = error?.error?.code ?: ""
                     responseLiveData?.postValue(
                         ApiResponse.error(
-                            error.message?.let {
-                                ApiResponse.ApiError(
-                                    response.code(),
-                                    msg,
-                                    it
-                                )
-                            }
+                            ApiResponse.ApiError(
+                                response.code(),
+                                msg,
+                                code
+                            )
                         )
                     )
                 }

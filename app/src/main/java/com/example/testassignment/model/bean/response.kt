@@ -1,13 +1,14 @@
 package com.example.testassignment.model.bean
 
 data class ErrorResponse(
-    val errors: List<Error>?, val message: String, val status: Int?
+    val error: Error?
 )
 
-//error
 data class Error(
-   val msg: String?,
+    val code: String?,
+    val message: String?
 )
+
 
 //Response Data class
 data class NasaResponse(

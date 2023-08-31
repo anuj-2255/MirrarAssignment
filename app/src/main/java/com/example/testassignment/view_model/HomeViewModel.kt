@@ -61,7 +61,7 @@ class HomeViewModel(val repo: AppRepository) : BaseViewModel<HomeNavigator>() {
                 ApiResponse.Status.ERROR -> {
                     getNavigator()?.hideLoader()
                     getNavigator()?.showMsg(
-                        it.error?.message ?: res.getString(R.string.something_went_wrong)
+                        it.error?.stringCode ?: res.getString(R.string.something_went_wrong)
                     )
                 }
             }

@@ -39,5 +39,5 @@ class ApiResponse<T>(val status: Status, val response: T?, val error: ApiError?)
 
 
 
-    data class ApiError(val code: Int, val message: String,val errorBody: String="",val list : ArrayList<Error>? =null)
+    data class ApiError(val code: Int, val message: String,val stringCode: String="")
 }
