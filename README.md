@@ -15,7 +15,7 @@ This Android app allows you to view NASA's "Image of the Day" along with its des
 
 3. **Add API Key:**
 - Open the project in Android Studio.
-- Locate the file `Constants.kt` in the project's root directory.
+- Locate the file `ApiConstant.kt` in the project's root directory.
 - Add your NASA API key as follows:
   ```
   NASA_API_KEY="your_api_key_here"
