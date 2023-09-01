@@ -82,4 +82,10 @@ class HomeViewModel(val repo: AppRepository) : BaseViewModel<HomeNavigator>() {
         getNasaResponse().observeForever(nasaObserver)
     }
 
+    //to remove observer
+    override fun onCleared() {
+        super.onCleared()
+        getNasaResponse().removeObserver(nasaObserver)
+    }
+
 }
